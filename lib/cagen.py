@@ -61,10 +61,10 @@ class CA(object):
         self.days = days
         self.created = False
         try:
-            basename = re.search(r'.*\/CN=([^\/]*)', subject).group(1).replace(' ', '-')
+            basename = re.search(r'.*/CN=([^/]*)', subject).group(1).replace(' ', '-')
         except AttributeError:
             raise CertException('Could not find CN in subject')
-        self._subject_base = re.sub(r'\/CN=.*', '', subject)
+        self._subject_base = re.sub(r'/CN=.*', '', subject)
         self.host_subject = self._subject_base + '/OU=Services/CN=' + _get_hostname()
 
         self.path = os.path.join(self._CERTS_DIR, basename + '.pem')
