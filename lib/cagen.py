@@ -330,10 +330,10 @@ def _get_DN_in_old_format(path, opt):
 
 def certificate_info(path):
     """Extracts and returns the subject and issuer from an X.509 certificate."""
-    subject = _get_DN_in_old_format(path, "subject")
+    subject = _get_DN_in_old_format(path, "-subject")
     if not subject:
         raise CertException('Could not extract subject from %s' % path)
-    issuer = _get_DN_in_old_format(path, "issuer")
+    issuer = _get_DN_in_old_format(path, "-issuer")
     if not issuer:
         raise CertException('Could not extract issuer from %s' % path)
     return subject, issuer
